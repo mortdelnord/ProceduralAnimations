@@ -88,20 +88,17 @@ public class ArmScriptV5 : MonoBehaviour
             Vector3 endPosCenter = newPos - center;
             
             timer += Time.deltaTime * legSpeed;
-            //float timerFrac = timer/timerMax;
+            
             float timerFrac = Mathf.SmoothStep(0f, 1f, timer);
     
-            // float fracComplete = (Time.time - startTime) / journeyTime;
-            ////Debug.Log(timerFrac);
+            
 
             transform.position = Vector3.Slerp(startPosCenter, endPosCenter, timerFrac);
             transform.position += center;
             if (timerFrac >= 1f)
             {
                 timer = 0f;
-                //startTime = Time.time;
-                //fracComplete = 0f;
-                ////Debug.Log("Finished mmoving");
+                
                 isGrounded = true;
                 target = newPos;
                 if (isGroup1)
